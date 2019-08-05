@@ -11,7 +11,8 @@ let board, scores, turn, winner;
 
 
 /*----- event listeners -----*/ 
-document.addEventListener('click', handleClick);
+document.querySelector('section.a').addEventListener('click', handleClick);
+document.querySelector('section.b').addEventListener('click', handleClick);
 
 
 /*----- functions -----*/
@@ -37,9 +38,21 @@ function render() {
 }
 
 function handleClick(evt) {
-    console.log(evt.target.id);
-    console.log(evt.target.innerHTML);
-    
+    let index = Number(evt.target.id);
+    let value = board[index];
+    console.log(value);
+    console.log(index);
+    for(let i = 0; i < value; i++){
+        let newIndex = index + i + 1;
+        board[newIndex] += 1;
+    }
+    board[evt.target.id] = 0;
+    console.log(board);
+    render();
 }
+    
+
+    
+    
 
 function getWinner() {}
