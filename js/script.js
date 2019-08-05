@@ -40,16 +40,24 @@ function render() {
 function handleClick(evt) {
     let index = Number(evt.target.id);
     let value = board[index];
-    console.log(value);
-    console.log(index);
-    for(let i = 0; i < value; i++){
+
+    
+    for(let i = 0; i < value; i++) {
         let newIndex = index + i + 1;
-        board[newIndex] += 1;
+        if (newIndex < board.length) {
+            board[newIndex] += 1;
+        } else {
+            newIndex -= 12;
+            board[newIndex] += 1;
+        }
+        
     }
+        
     board[evt.target.id] = 0;
     console.log(board);
     render();
 }
+
     
 
     
