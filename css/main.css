@@ -40,13 +40,13 @@ section.a div, section.b div {
     width: 100%;
 }
 
-section.a-mancala {
-    grid-column: 3;
+section.a {
+    grid-column: 2 / 4;
     grid-row: 3;
 }
 
-section.b-mancala {
-    grid-column: 1;
+section.b {
+    grid-column: 1 / 3;
     grid-row: 2;
 }
 
