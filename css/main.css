@@ -10,7 +10,7 @@ body {
 main {
     display: grid;
     grid-template-columns: 15vmin 100vmin 15vmin;
-    grid-template-rows: 10vmin 20vmin 20vmin 10vmin;
+    grid-template-rows: 10vmin 20vmin 20vmin 10vmin 10vmin;
 }
 
 main * {
@@ -53,4 +53,14 @@ section.b {
 footer {
     grid-column: 2;
     grid-row: 4;
+}
+
+button {
+    display: none;
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.show {
+display: flex;
 }

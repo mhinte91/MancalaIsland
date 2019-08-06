@@ -16,6 +16,7 @@ let board, turn, winner;
 /*----- event listeners -----*/ 
 document.querySelector('section.a').addEventListener('click', handleClick);
 document.querySelector('section.b').addEventListener('click', handleClick2);
+document.querySelector('button').addEventListener('click', init);
 // document.querySelector('section.b').addEventListener('click', handleClickTwo);
 
 
@@ -43,6 +44,7 @@ function handleClick(evt) {
     playerOneTurn(evt);
     render();
     getWinner();
+    playAgain(winner);
 }
 
 
@@ -50,6 +52,7 @@ function handleClick2(evt) {
     playerTwoTurn(evt);
     render();
     getWinner();
+    playAgain(winner);
 }
 
 
@@ -62,7 +65,7 @@ function drawBoard(){
 function playerOneTurn(evt) {
     let index = Number(evt.target.id);
     let value = board[index];
-    if (turn === -1 || index === 6 || value === 0) return;
+    if (turn === -1 || index === 6 || value === 0 || winner === true) return;
     else {
         for(let i = 0; i < value; i++) {
             let newIndex = index + i + 1;
@@ -86,7 +89,7 @@ function playerOneTurn(evt) {
 function playerTwoTurn(evt) {
     let index = Number(evt.target.id);
     let value = board[index];
-    if (turn === 1 || index === 13 || value === 0) return;
+    if (turn === 1 || index === 13 || value === 0 || winner === true) return;
     else {
         for(let i = 0; i < value; i++) {
             let newIndex = index + i + 1;
@@ -137,13 +140,13 @@ function getWinner() {
     if (board[0]+board[1]+board[2]+board[3]+board[4]+board[5] === 0 ||
         board[7]+board[8]+board[9]+board[10]+board[11]+board[12] === 0) {
             if (board[6] === board[13]){
-                console.log("TIE GAME");
+                document.querySelector('footer').innerHTML = `TIE GAME!!!`;
                 winner = true;
             } else if (board[6] > board[13]) {
-                console.log("PLAYER ONE WINS");
+                document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]} WINS!!!`;
                 winner = true;
             } else if (board[6] < board[13]) {
-                console.log("PLAYER TWO WINS");
+                document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]} WINS!!!`;
                 winner = true;
             }
        } else return;
@@ -153,6 +156,12 @@ function getWinner() {
 
 function renderMessage(){
     document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]}'s Turn!`;
+}
+
+function playAgain(winner) {
+    if (winner) {
+        document.querySelector('button').className= 'show';
+    }
 }
     
     
