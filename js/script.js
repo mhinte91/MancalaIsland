@@ -6,7 +6,7 @@ const PLAYER = {
 
 
 /*----- app's state (variables) -----*/ 
-let board, scores, turn, winner;
+let board, turn, winner;
 
 
 /*----- cached element references -----*/ 
@@ -22,16 +22,15 @@ document.querySelector('section.b').addEventListener('click', handleClick2);
 /*----- functions -----*/
 init();
 
+
 function init() {
     drawBoard();
-    scores = {
-        a: 0,
-        b: 0
-    };
     turn = 1;
     winner = null;
     render();
 }
+
+
 function render() {
     board.forEach(function(pot, potIdx) {
         document.getElementById(potIdx).innerHTML = pot;
@@ -39,19 +38,19 @@ function render() {
     renderMessage();
 }
 
+
 function handleClick(evt) {
     playerOneTurn(evt);
     render();
     getWinner();
-    }
+}
 
 
 function handleClick2(evt) {
-        playerTwoTurn(evt);
-        render();
-        getWinner();
-    }
-
+    playerTwoTurn(evt);
+    render();
+    getWinner();
+}
 
 
 function drawBoard(){
@@ -67,17 +66,21 @@ function playerOneTurn(evt) {
     else {
         for(let i = 0; i < value; i++) {
             let newIndex = index + i + 1;
-                if (newIndex < board.length - 1) {
-                    board[newIndex]++;
-                } else {
-                    newIndex -= board.length - 1;
-                    board[newIndex]++;
-                }
-            } 
-        board[evt.target.id] = 0;
-        turn *= -1;
+            if (newIndex < board.length - 1) {
+                board[newIndex]++;
+            } else {
+                newIndex -= board.length - 1;
+                board[newIndex]++;
+            }
+        } 
+    let finalValue = board[index + board[index]];
+    let finalIndex = index + value;
+    isEmpty(finalValue, finalIndex);
+    board[evt.target.id] = 0;
+    turn *= -1;
+    }
 }
-}
+
 
 function playerTwoTurn(evt) {
     let index = Number(evt.target.id);
@@ -99,19 +102,28 @@ function playerTwoTurn(evt) {
                 board[newIndex]--;
                 value++;
             }
-                
-                
-               
-            } 
-        board[evt.target.id] = 0;
-        turn *= -1;
+        } 
+    let finalValue = board[index + board[index]];
+    let finalIndex = index + value;
+    isEmpty(finalValue, finalIndex);
+    board[evt.target.id] = 0;
+    turn *= -1;
+    }
 }
+
+function isEmpty(finalValue, finalIndex) {
+    let a = finalIndex;
+    let b = board.length - finalIndex - 2;
+    if (finalValue === 1 && finalIndex !== 13 && finalIndex !== 6) {
+        if (turn === 1 && finalIndex < 6) {
+        board[a] += board[b];
+        board[b] = 0;
+        } else if (turn === -1 && finalIndex > 6) {
+        board[a] += board[b];
+        board[b] = 0;
+        }
+    }
 }
-            
-function renderMessage(){
-    document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]}'s Turn!`;
-}
-    
     
 
 function getWinner() {
@@ -130,3 +142,10 @@ function getWinner() {
        } else return;
 
 }
+
+
+function renderMessage(){
+    document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]}'s Turn!`;
+}
+    
+    
