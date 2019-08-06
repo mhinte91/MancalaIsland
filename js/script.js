@@ -4,6 +4,9 @@ const PLAYER = {
     '-1': 'Two'
 };
 
+const IMAGES = {
+    4: '<img src="imgs/turtle.svg" alt="">pot</img>'
+}
 
 /*----- app's state (variables) -----*/ 
 let board, turn, winner;
@@ -143,10 +146,10 @@ function getWinner() {
                 document.querySelector('footer').innerHTML = `TIE GAME!!!`;
                 winner = true;
             } else if (board[6] > board[13]) {
-                document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]} WINS!!!`;
+                document.querySelector('footer').innerHTML = `Player One WINS!!!`;
                 winner = true;
             } else if (board[6] < board[13]) {
-                document.querySelector('footer').innerHTML = `Player ${PLAYER[turn]} WINS!!!`;
+                document.querySelector('footer').innerHTML = `Player Two WINS!!!`;
                 winner = true;
             }
        } else return;

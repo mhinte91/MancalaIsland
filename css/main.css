@@ -4,13 +4,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 10vh;
+    background-color: #4A86E8;
+}
 
 
 main {
     display: grid;
-    grid-template-columns: 15vmin 100vmin 15vmin;
-    grid-template-rows: 10vmin 20vmin 20vmin 10vmin 10vmin;
+    grid-template-columns: 20vmin 120vmin 20vmin;
+    grid-template-rows: 20vmin 25vmin 25vmin 20vmin 20vmin;
+    
+    color: #D3F0FE;
+    text-shadow: -2px 0 black;
 }
 
 main * {
@@ -22,8 +28,8 @@ main * {
 h2 {
     grid-column: 2;
     grid-row: 1;
-   
 }
+
 
 section.a {
     grid-column: 2;
@@ -37,7 +43,13 @@ section.b {
 }
 
 section.a div, section.b div {
+    height: 100%;
     width: 100%;
+    background-color: #FDB664;
+    border-radius: 50%;
+    border: 2px solid chocolate;
+    text-shadow: none;
+    color: black;
 }
 
 section.a {
@@ -62,5 +74,6 @@ button {
 }
 
 .show {
-display: flex;
+    display: flex;
 }
+
