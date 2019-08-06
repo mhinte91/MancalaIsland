@@ -76,6 +76,7 @@ function playerOneTurn(evt) {
     let finalValue = board[index + board[index]];
     let finalIndex = index + value;
     isEmpty(finalValue, finalIndex);
+    isMancala(finalIndex);
     board[evt.target.id] = 0;
     turn *= -1;
     }
@@ -106,6 +107,7 @@ function playerTwoTurn(evt) {
     let finalValue = board[index + board[index]];
     let finalIndex = index + value;
     isEmpty(finalValue, finalIndex);
+    isMancala(finalIndex);
     board[evt.target.id] = 0;
     turn *= -1;
     }
@@ -124,7 +126,12 @@ function isEmpty(finalValue, finalIndex) {
         }
     }
 }
-    
+
+function isMancala(finalIndex) {
+    if (turn === 1 && finalIndex === 6) {turn *= -1;}
+    else if (turn === -1 && finalIndex === 13) {turn *= -1;}
+    else return;
+}
 
 function getWinner() {
     if (board[0]+board[1]+board[2]+board[3]+board[4]+board[5] === 0 ||
