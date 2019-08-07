@@ -4,9 +4,6 @@ const PLAYER = {
     '-1': 'Two'
 };
 
-const IMAGES = {
-    4: '<img src="imgs/turtle.svg" alt="">pot</img>'
-}
 
 /*----- app's state (variables) -----*/ 
 let board, turn, winner;
