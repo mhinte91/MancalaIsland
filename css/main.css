@@ -13,7 +13,7 @@ main {
     display: grid;
     grid-template-columns: 20vmin 120vmin 20vmin;
     grid-template-rows: 20vmin 25vmin 25vmin 20vmin 20vmin;
-    
+    grid-gap: 3px;
     color: #D3F0FE;
     text-shadow: -2px 0 black;
 }
@@ -45,8 +45,11 @@ section.a div, section.b div {
     height: 100%;
     width: 100%;
     background-color: #FDB664;
+    background-image: url('../imgs/sand2.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 50%;
-    border: 2px solid chocolate;
+    border: 2px ridge #99623B;
     text-shadow: none;
     color: black;
 }
