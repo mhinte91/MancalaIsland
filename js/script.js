@@ -71,16 +71,24 @@ function playerOneTurn(evt) {
             let newIndex = index + i + 1;
             if (newIndex < board.length - 1) {
                 board[newIndex]++;
+    
             } else {
-                newIndex -= board.length - 1;
-                board[newIndex]++;
+                if (newIndex < 2 * (board.length - 1)) {
+                    newIndex -= board.length - 1;
+                    board[newIndex]++;
+                    console.log(newIndex);
+                } else {
+                    newIndex -= 2 * (board.length - 1);
+                    board[newIndex]++;
+                    console.log(newIndex);
+                    }
             }
         } 
     let finalValue = board[index + board[index]];
     let finalIndex = index + value;
     isEmpty(finalValue, finalIndex);
     isMancala(finalIndex);
-    board[evt.target.id] = 0;
+    board[evt.target.id] -= value;
     turn *= -1;
     }
 }
@@ -165,4 +173,3 @@ function playAgain(winner) {
 }
 
 
-    
