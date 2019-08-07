@@ -6,9 +6,8 @@ body {
     align-items: center;
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 10vh;
-    background-color: #4A86E8;
+    background-image: url('../imgs/shallows.jpeg');
 }
-
 
 main {
     display: grid;
