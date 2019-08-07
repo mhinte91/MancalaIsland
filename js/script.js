@@ -29,6 +29,7 @@ function init() {
     turn = 1;
     winner = null;
     render();
+    document.querySelector('button').className= '';
 }
 
 
@@ -76,11 +77,9 @@ function playerOneTurn(evt) {
                 if (newIndex < 2 * (board.length - 1)) {
                     newIndex -= board.length - 1;
                     board[newIndex]++;
-                    console.log(newIndex);
                 } else {
                     newIndex -= 2 * (board.length - 1);
                     board[newIndex]++;
-                    console.log(newIndex);
                     }
             }
         } 
@@ -105,21 +104,27 @@ function playerTwoTurn(evt) {
             if (newIndex < board.length) {
                 board[newIndex]++;
                 
-            } else if (newIndex >= board.length){
+            } else { 
+                if (newIndex < 2 * board.length){
                 newIndex -= board.length;
                 board[newIndex]++;
+                } else {
+                    newIndex -= 2 * board.length;
+                    board[newIndex]++;
+                }
             }
             
             if (newIndex === 6) {
                 board[newIndex]--;
                 value++;
+                board[evt.target.id]++;
             }
         } 
     let finalValue = board[index + board[index]];
     let finalIndex = index + value;
     isEmpty(finalValue, finalIndex);
     isMancala(finalIndex);
-    board[evt.target.id] = 0;
+    board[evt.target.id] -= value;
     turn *= -1;
     }
 }

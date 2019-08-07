@@ -97,5 +97,16 @@ button {
 
 .show {
     display: flex;
+    width: 50%;
+    margin: 10px auto;
+    border-radius: 10px;
+    border: 2px ridge #99623B;
+    background-image: url('../imgs/sand1.jpeg');
+    background-size: 50%;
+    color: black;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 5vh;
+
+
 }
 
