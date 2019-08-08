@@ -25,13 +25,18 @@ init();
 
 
 function init() {
-    drawBoard();
     turn = 1;
     winner = null;
-    render();
     document.querySelector('button').className= '';
+    drawBoard();
+    render();
 }
 
+function drawBoard(){
+    board = new Array(14).fill(4);
+    board[6] = 0;
+    board[13] = 0;
+}
 
 function render() {
     board.forEach(function(pot, potIdx) {
@@ -57,11 +62,6 @@ function handleClick2(evt) {
 }
 
 
-function drawBoard(){
-    board = new Array(14).fill(4);
-    board[6] = 0;
-    board[13] = 0;
-}
             
 function playerOneTurn(evt) {
     let index = Number(evt.target.id);
@@ -83,8 +83,8 @@ function playerOneTurn(evt) {
                     }
             }
         } 
-    let finalValue = board[index + board[index]];
     let finalIndex = index + value;
+    let finalValue = board[index + board[index]];
     isEmpty(finalValue, finalIndex);
     isMancala(finalIndex);
     board[evt.target.id] -= value;
@@ -120,8 +120,8 @@ function playerTwoTurn(evt) {
                 board[evt.target.id]++;
             }
         } 
-    let finalValue = board[index + board[index]];
     let finalIndex = index + value;
+    let finalValue = board[index + board[index]];
     isEmpty(finalValue, finalIndex);
     isMancala(finalIndex);
     board[evt.target.id] -= value;
@@ -144,8 +144,8 @@ function isEmpty(finalValue, finalIndex) {
 }
 
 function isMancala(finalIndex) {
-    if (turn === 1 && finalIndex === 6) {turn *= -1;}
-    else if (turn === -1 && finalIndex === 13) {turn *= -1;}
+    if (finalIndex === 6) {turn *= -1;}
+    else if (finalIndex === 13) {turn *= -1;}
     else return;
 }
 
@@ -176,5 +176,3 @@ function playAgain(winner) {
         document.querySelector('button').className= 'show';
     }
 }
-
-
