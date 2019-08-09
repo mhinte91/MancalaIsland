@@ -7,7 +7,7 @@ Players will take turns according to the following rules:
 
 ## Gameplay
 - Player selects a non-empty pot on his/her side, retrieving all pieces in that space.
-- Player's hand then automatically moves counter-clockwise, dropping one piece in each pot he passes (**including** *their own* mancala, and **exluding** opponent's mancala) until the hand is empty.
+- Player's hand then automatically moves counter-clockwise, dropping one piece in each pot he/she passes (**including** *their own* mancala, and **exluding** opponent's mancala) until the hand is empty.
 - If a player drops his/her final piece in an empty pot on *their own side*, all pieces in the opponent's opposing space are transferred to that pot.
 - If a player drops his/her final piece their own mancala, they takes another turn.
 
